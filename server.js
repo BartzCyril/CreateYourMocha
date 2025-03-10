@@ -36,7 +36,11 @@ app.delete('/notes/:id', (req, res) => {
     res.json({ message: "Note deleted", deletedNote });
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Serveur de notes sur http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    const PORT = 3000;
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
